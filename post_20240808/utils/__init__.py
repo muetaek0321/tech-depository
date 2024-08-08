@@ -1,0 +1,1 @@
+from .cv2_japanese import *
