@@ -2,20 +2,7 @@ import random
 
 from minimax import minimax_agent
 from q_learning import qlearning_agent
-
-
-def random_agent(board: list) -> tuple:    
-    # boardの状態を確認
-    blank_state_list = []
-    for i, row in enumerate(board):
-        for j, state in enumerate(row):
-            if state == "":
-                blank_state_list.append((i, j))
-                
-    # 〇×が入っていないマスをランダムに選択
-    choice = random.choice(blank_state_list)
-    
-    return choice
+from modules import random_agent
 
 
 def check_winner(board):

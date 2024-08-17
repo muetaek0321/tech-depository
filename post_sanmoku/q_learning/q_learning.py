@@ -28,25 +28,37 @@ def board_to_play_area(board: list) -> list:
     return play_area    
 
 
-def qlearning_agent(board: list, turn_p: str) -> tuple:
+def qlearning_agent(
+    board: list, 
+    turn_p: str = "O",
+) -> tuple:
+    """Q学習で三目並べを実行する対戦エージェント
+    
+    Args:
+        board (list): 盤面の状態を格納したリスト
+        turn_p (str): 現在選択中のプレイヤー
+    """
     # コンフィグファイルの読み込み
     cfg = configparser.ConfigParser()
     cfg.read('./q_learning/config.ini', encoding='utf-8')
-    weight_file = cfg["AGENT"]
+    if turn_p == "O":
+        weight_file = cfg["AGENT"]["p1_weight"]
+    elif turn_p == "X":
+        weight_file = cfg["AGENT"]["p2_weight"]
 
     # 重みファイルの読み込んでQテーブルを設定
-    q_table = pd.read_csv(weight_file["weight"], header=None).to_numpy()
+    q_table = pd.read_csv(weight_file, header=None).to_numpy()
     
-    # TODO: boardの形式をQ学習のコードに合わせて変換
+    # boardの形式をQ学習のコードに合わせて変換
     play_area = board_to_play_area(board)
     # print(play_area)
     # return
     
-    # TODO: AI判定を実行
+    # AI判定を実行
     choosable_area = [str(area) for area in play_area if type(area) is int]
     ai_input = get_ql_action(play_area, choosable_area, q_table, epsilon=0)
     
-    # TODO: 入力位置を元のboardの座標位置に変換
+    # 入力位置を元のboardの座標位置に変換
     i, j = PLAY_AREA_TO_BOARD[ai_input]
     
     return i, j

@@ -49,17 +49,17 @@ class SettingPanel(CreatePanel):
             self.select_pnl.p1_random_radio_btn.GetValue(),
             self.select_pnl.p1_minimax_radio_btn.GetValue(),
             self.select_pnl.p1_qlearning_radio_btn.GetValue()
-        ]
+        ].index(True)
         player2 = [
             self.select_pnl.p2_user_radio_btn.GetValue(),
             self.select_pnl.p2_random_radio_btn.GetValue(),
             self.select_pnl.p2_minimax_radio_btn.GetValue(),
             self.select_pnl.p2_qlearning_radio_btn.GetValue()
-        ]
+        ].index(True)
         
         # ゲーム画面表示する
-        self.parent.play_pnl.Enable()
-        self.parent.play_pnl.reset_state()
+        self.Disable()
+        self.parent.play_pnl.play_sanmoku(player1, player2)
 
 class SelectPlayerPanel(CreatePanel):
     def __init__(self, parent, size, color):

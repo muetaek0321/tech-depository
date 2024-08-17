@@ -1,11 +1,18 @@
+import time
+import threading
+
 import wx
 import numpy as np
 import cv2
 
 from .wxpy.widgets import DEFAULT_COLOR, CreateImagePanel
-
+from minimax import minimax_agent
+from q_learning import qlearning_agent
+from .random_agent import random_agent
 
 class PlayPanel(CreateImagePanel):
+    """三目並べの盤面"""
+    
     def __init__(
         self, 
         parent: wx.Frame | wx.Panel, 
@@ -21,6 +28,15 @@ class PlayPanel(CreateImagePanel):
         self.parent = parent
         self.size = size
         
+        # ゲーム中かどうかのフラグ
+        self.playing = False
+        
+        # 実行時に使用する変数を初期化
+        self.play_thread = None
+        self.player1 = None
+        self.player2 = None
+        self.p_mark = {"O": "PLAYER1", "X": "PLAYER2"}
+        
         self.board = [[""]*3 for _ in range(3)]
         self.turn = "O"
         
@@ -35,6 +51,36 @@ class PlayPanel(CreateImagePanel):
         
         # クリックイベントを作成
         self.Bind(wx.EVT_LEFT_DOWN, self.click_board)
+        
+    def play_sanmoku(
+        self,
+        player1: int,
+        player2: int,
+    ) -> None:
+        """三目並べをプレイ
+        
+        Args:
+            player1 (int): 使用する対戦エージェントの番号
+            player2 (int): 使用する対戦エージェントの番号
+        """
+        self.reset_state()
+        self.playing = True
+        
+        self.play_thread = PlayThread(self)
+        self.player1 = player1
+        self.player2 = player2
+        
+        # threadingを実行
+        self.play_thread.setDaemon(True)
+        self.play_thread.start()
+    
+    def user_click(
+        self,
+    ) -> None:
+        """ユーザが画面クリックで入力
+        """
+        # クリックイベントを有効化
+        self.Enable()
         
     def create_init_board_image(
         self
@@ -80,14 +126,19 @@ class PlayPanel(CreateImagePanel):
                 self.turn = "X"
             elif self.turn == "X":
                 self.turn = "O"
-            self.parent.SetStatusText(f"\"{self.turn}\"のターンです。")
+            self.parent.SetStatusText(f"{self.p_mark[self.turn]}({self.turn})のターンです。")
         elif judge == "draw":
             # 引き分けを表示して終了
             self.parent.SetStatusText(f"引き分けです。")
+            self.playing = False
+            self.parent.setting_pnl.Enable()
         else:
             # 勝者を表示して終了
-            self.parent.SetStatusText(f"\"{judge}\"の勝利です！")
-            self.Disable()        
+            self.parent.SetStatusText(f"{self.p_mark[judge]}({judge})の勝利です！")
+            self.playing = False
+            self.parent.setting_pnl.Enable()
+            
+        self.Disable()    
         
     def check_winner(
         self
@@ -118,7 +169,7 @@ class PlayPanel(CreateImagePanel):
         """
         self.board = [[""]*3 for _ in range(3)]
         self.turn = "O"
-        self.parent.SetStatusText(f"\"{self.turn}\"のターンです。")
+        self.parent.SetStatusText(f"{self.p_mark[self.turn]}({self.turn})のターンです。")
         self.create_init_board_image()
         self.set_image(self.board_img)
 
@@ -166,6 +217,61 @@ class PlayPanel(CreateImagePanel):
         # 入力可能なboard座標か確認
         if self.board[board_y][board_x] == "":
              # ボードの更新
-            self.update_board(board_x, board_y)   
+            self.update_board(board_x, board_y)
         
+
+class PlayThread(threading.Thread):
+    """ゲームの進行をするスレッド"""
+    
+    def __init__(
+        self,
+        play_pnl: PlayPanel
+    ) -> None:
+        """コンストラクタ
         
+        Args:
+            play_pnl (PlayPanel): 三目並べの盤面
+        """
+        super().__init__()
+        self.play_pnl = play_pnl   
+        
+    def run(
+        self
+    ) -> None:
+        """threadingで実行する処理
+        """
+        players = {
+            "O": self.play_pnl.player1, 
+            "X": self.play_pnl.player2
+        }
+        update = self.play_pnl.update_board
+        
+        while True:
+            # ユーザ入力
+            if players[self.play_pnl.turn] == 0:
+                self.play_pnl.user_click()            
+            # ランダム
+            elif players[self.play_pnl.turn] == 1:
+                board_y, board_x = random_agent(
+                    self.play_pnl.board,
+                )
+                update(board_x, board_y)  
+            # minimax
+            elif players[self.play_pnl.turn] == 2:
+                board_y, board_x = minimax_agent(
+                    board=self.play_pnl.board,
+                    turn_p=self.play_pnl.turn
+                )
+                update(board_x, board_y) 
+            # Q学習
+            elif players[self.play_pnl.turn] == 3:
+                board_y, board_x = qlearning_agent(
+                    board=self.play_pnl.board,
+                    turn_p=self.play_pnl.turn
+                )
+                update(board_x, board_y)
+            
+            if not self.play_pnl.playing:
+                break
+            
+            # time.sleep(3)
