@@ -1,3 +1,7 @@
+会社の勉強会で作成したQ学習とMiniMax法のコードをベースに対戦エージェントを作成し、それを使用した三目並べ対戦GUIを作成しました。<br>
+
+ブログ記事はこちら↓<br>
+[Pythonで三目並べ対戦GUIを作ってみた](https://fallpoke-tech.hatenadiary.jp/entry/2024/08/17/223716)<br>
 
 ### 実行時のGUIイメージ
 <img src="./images/screenshot_sanmoku_gui.png" width="300px">
