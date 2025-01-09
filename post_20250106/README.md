@@ -1,9 +1,9 @@
 ### GUIライブラリ「Gooey」のサンプルコードです。  
 
 ### 記事
-（作成中…）
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/01/07/182605](https://fallpoke-tech.hatenadiary.jp/entry/2025/01/07/182605)
 
-####【参考】  
+#### 【参考】  
 - argparseの基本的な使い方  
 [https://qiita.com/kzkadc/items/e4fc7bc9c003de1eb6d0](https://qiita.com/kzkadc/items/e4fc7bc9c003de1eb6d0)  
 
