@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>FastAPI：ファイルダウンロードデモ</title>
+  </head>
+
+  <body>
+    <p>
+      <h4>ファイルを読み込んでダウンロード</h4>
+      <a href="http://localhost:8000/download_from_file">
+        <button>ダウンロード</button>
+      </a>
+    </p>
+
+    <hr>
+
+    <p>
+      <h4>DataFrameをcsv化してダウンロード</h4>
+      <a href="http://localhost:8000/download_from_df?ext=csv">
+        <button>ダウンロード</button>
+      </a>
+    </p>
+
+    <hr>
+
+    <p>
+      <h4>DataFrameをexcelファイル化してダウンロード</h4>
+      <a href="http://localhost:8000/download_from_df?ext=xlsx">
+        <button>ダウンロード</button>
+      </a>
+    </p>
+
+    <hr>
+
+  </body>
+
+</html>
