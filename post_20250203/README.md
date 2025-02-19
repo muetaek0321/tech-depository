@@ -1,7 +1,7 @@
 ### FastAPIを使用したファイルダウンロードのAPIのサンプル  
 
 ### 記事
-[準備中]()
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/02/03/182710](https://fallpoke-tech.hatenadiary.jp/entry/2025/02/03/182710)
 
 #### 実行コマンド
 以下、1,2どちらでも可能です。  
