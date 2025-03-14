@@ -1,6 +1,6 @@
 ### Gemma3おためし 
 
 ### 記事
-[準備中…]()
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/03/14/214507](https://fallpoke-tech.hatenadiary.jp/entry/2025/03/14/214507)
 
 
