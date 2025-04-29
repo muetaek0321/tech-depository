@@ -32,8 +32,8 @@ def main() -> None:
     
     # バイト列の長さを確認
     print("Image:", len(byte_img)) # 6000
-    print("width:", len(byte_w), byte_w)   # 4
-    print("height:", len(byte_h), byte_h)  # 4
+    print("width:", len(byte_w))   # 4
+    print("height:", len(byte_h))  # 4
 
     input('push enter to exit.')
 
