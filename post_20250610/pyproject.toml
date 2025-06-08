@@ -1,0 +1,11 @@
+[project]
+name = "post-20250610"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=0.3.25",
+    "langchain-google-genai>=2.1.5",
+    "langchain-mcp-adapters>=0.1.7",
+]
