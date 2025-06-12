@@ -18,7 +18,6 @@ TEMPLATE = """
 答え: {agent_scratchpad}
 """
 
-
 # AIの返答を作成
 async def gemini_mcp_generator(user_input, mcp_config_path):        
     # モデルを準備
