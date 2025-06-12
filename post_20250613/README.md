@@ -1,6 +1,6 @@
-### MCPサーバをいろいろ試す回
+### チャットベースでさらにMCPサーバを試す回【LangChain MCP Adapters】
 
 ### 記事
-[準備中…]()
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/06/13/002736](https://fallpoke-tech.hatenadiary.jp/entry/2025/06/13/002736)
 
 
