@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>FastAPI：app.stateのデモ</title>
+  </head>
+
+  <body>
+    <p>
+      <h4>テキストを入力して送信</h4>
+      <form id="textForm">
+        <input type="text" id="inputText" name="text">
+        <button type="submit">送信</button>
+      </form>
+      <p id="responseArea"></p>
+
+    </p>
+
+    <hr>
+
+    <p>
+      <h4>メッセージを取得してアラートで表示（同一コードのAPI）</h4>
+      <button onclick="fetchData('message')">APIからデータ取得</button>
+    </p>
+
+    <hr>
+
+    <p>
+      <h4>メッセージを取得してアラートで表示（routerのAPI）</h4>
+      <button onclick="fetchData()">APIからデータ取得</button>
+    </p>
+
+    <hr>
+
+    <script src="/modules/postText.js"></script>
+    <script src="/modules/getMessage.js"></script>
+
+  </body>
+
+</html>
