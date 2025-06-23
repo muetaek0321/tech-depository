@@ -5,9 +5,12 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from modules.types import *
+from router import sub
 
 
 app = FastAPI()
+
+app.include_router(sub.router)
 
 # /modules というURLで modules フォルダ内のファイルを配信
 app.mount("/modules", StaticFiles(directory="modules"), name="modules")
@@ -47,7 +50,7 @@ def record_message(
 
 
 @app.get("/message")
-def download_from_df() -> str:
+def get_message() -> str:
     """記録したメッセージを取り出す
     """
     # stateから取り出し
