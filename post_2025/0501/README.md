@@ -4,6 +4,6 @@
 [https://fallpoke-tech.hatenadiary.jp/entry/2025/05/01/000551](https://fallpoke-tech.hatenadiary.jp/entry/2025/05/01/000551)
 
 #### 改良前のコード
-[https://github.com/muetaek0321/tech-depository/tree/main/post_20250430](https://github.com/muetaek0321/tech-depository/tree/main/post_20250430)
+[https://github.com/muetaek0321/tech-depository/tree/main/post_2025/0430](https://github.com/muetaek0321/tech-depository/tree/main/post_2025/0430)
 
 
