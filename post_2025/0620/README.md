@@ -1,7 +1,7 @@
 ### FastAPIのapp.stateのデモコード  
 
 ### 記事
-[https://fallpoke-tech.hatenadiary.jp/entry/2025/07/09/003929](https://fallpoke-tech.hatenadiary.jp/entry/2025/07/09/003929)
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/06/25/000521](https://fallpoke-tech.hatenadiary.jp/entry/2025/06/25/000521)
 
 #### 実行コマンド
 以下、1,2どちらでも可能です。  
