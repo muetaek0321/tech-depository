@@ -1,7 +1,7 @@
 ### FastAPIのTemporary Redirectのデモコード  
 
 ### 記事
-[]()
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/07/17/232923](https://fallpoke-tech.hatenadiary.jp/entry/2025/07/17/232923)
 
 #### 実行コマンド
 以下、1,2どちらでも可能です。 
