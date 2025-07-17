@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>FastAPI：Temporary Redirectデモ</title>
+  </head>
+
+  <body>
+    <p>
+      <h4><b>endpoint_1</b>の画像取得APIを呼び出し</h4>
+      <a href="http://localhost:8000/img_1" target="_blank">
+        <button>画像ダウンロード</button>
+      </a>
+    </p>
+
+    <hr>
+
+    <p>
+      <h4><b>endpoint_1</b>から<b>endpoint_2</b>の画像取得APIを呼び出し</h4>
+      <a href="http://localhost:8000/img_2" target="_blank">
+        <button>画像ダウンロード</button>
+      </a>
+    </p>
+
+    <hr>
+
+    <p>
+      <h4><b>endpoint_1</b>のテキスト取得APIを呼び出し</h4>
+      <button onclick="fetchText('/message_1')">
+        テキスト取得
+      </button>
+    </p>
+
+    <hr>
+
+    <p>
+      <h4><b>endpoint_1</b>から<b>endpoint_2</b>のテキスト取得APIを呼び出し</h4>
+      <button onclick="fetchText('/message_2')">
+        テキスト取得
+      </button>
+    </p>
+
+    <script>
+      function fetchText(apiUrl) {
+        fetch("http://localhost:8000"+apiUrl)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error('ネットワークエラー: ' + res.status);
+            }
+            return res.text();
+          })
+          .then((data) => {
+            console.log(data)
+            alert(data)
+          })
+          .catch((res) => alert("エラーが発生しました：" + res))
+      }
+    </script>
+
+  </body>
+
+</html>
