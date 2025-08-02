@@ -1,7 +1,10 @@
 .env*/
 __pycache__/
+.vscode/
 
 logs/
 
 .venv
 .env
+
+post_2025/0804/conversations*
