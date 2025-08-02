@@ -1,7 +1,7 @@
 ### Pythonのデータのキャッシュ保存比較  
 
 ### 記事
-[準備中]()
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/08/04/074500](https://fallpoke-tech.hatenadiary.jp/entry/2025/08/04/074500)
 
 #### 参考URL
 - pickle  
