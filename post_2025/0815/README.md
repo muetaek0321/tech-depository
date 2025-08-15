@@ -1,7 +1,7 @@
 ### WordCloudでChatGPTの履歴を解析 
 
 ### 記事
-[準備中…](https://fallpoke-tech.hatenadiary.jp/)
+[https://fallpoke-tech.hatenadiary.jp/entry/2025/08/15/221947](https://fallpoke-tech.hatenadiary.jp/entry/2025/08/15/221947)
 
 
 #### 参考サイト  
