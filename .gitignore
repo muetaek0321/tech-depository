@@ -5,3 +5,6 @@ logs/
 
 .venv
 .env
+
+post_2025/0818/conversations.json
+post_2025/0818/wordcloud.png
