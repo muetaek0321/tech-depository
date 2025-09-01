@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <title>FastAPI：lifespanデモ</title>
+  </head>
+
+  <body>
+
+    <p>
+      <h4>テキスト取得APIを呼び出し</h4>
+      <button onclick="fetchText('/message')">
+        テキスト取得
+      </button>
+    </p>
+
+    <p>
+      <h4>テキスト取得APIを呼び出し（router）</h4>
+      <button onclick="fetchText('/message2')">
+        テキスト取得
+      </button>
+    </p>
+
+    <script>
+      function fetchText(apiUrl) {
+        fetch("http://localhost:8000"+apiUrl)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error('ネットワークエラー: ' + res.status);
+            }
+            return res.text();
+          })
+          .then((data) => {
+            console.log(data)
+            alert(data)
+          })
+          .catch((res) => alert("エラーが発生しました：" + res))
+      }
+    </script>
+
+  </body>
+
+</html>
