@@ -8,6 +8,8 @@ logs/
 .env
 pretrained/
 
+result*/
+
 post_2025/0804/conversations*
 post_2025/0815/conversations.json
 post_2025/0815/wordcloud.png
