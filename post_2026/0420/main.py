@@ -37,6 +37,7 @@ def base_model_test_1(
     """postメソッドでテスト"""
     # 受け取ったリクエストモデルを表示
     pprint(pyload.model_dump())
+    pprint(pyload.model_dump(by_alias=True))
     
     # レスポンスモデルを返す
     response = ResponseModel(
@@ -55,6 +56,7 @@ def base_model_test_2(
     """getメソッドでテスト"""
     # 受け取ったリクエストモデルを表示
     pprint(query.model_dump())
+    pprint(query.model_dump(by_alias=True))
     
     # レスポンスモデルを返す
     response = ResponseModel(
