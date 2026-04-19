@@ -31,17 +31,17 @@ def root() -> dict:
 
 @app.post("/test")
 def base_model_test_1(
-    pyload: RequestModel
+    payload: RequestModel
 ) -> ResponseModel:
     """postメソッドでテスト"""
     # 受け取ったリクエストモデルを表示
-    print("変換なし:", pyload.model_dump())
-    print("変換あり:", pyload.model_dump(by_alias=True))
+    print("変換なし:", payload.model_dump())
+    print("変換あり:", payload.model_dump(by_alias=True))
     
     # レスポンスモデルを返す
     response = ResponseModel(
-        user_id=pyload.user_id,
-        user_name=pyload.user_name,
+        user_id=payload.user_id,
+        user_name=payload.user_name,
         message="postメソッドでレスポンスモデルのテスト"
     )
     
