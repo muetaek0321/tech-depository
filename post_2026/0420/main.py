@@ -1,4 +1,3 @@
-from pprint import pprint
 from typing import Annotated
 
 import uvicorn
@@ -36,8 +35,8 @@ def base_model_test_1(
 ) -> ResponseModel:
     """postメソッドでテスト"""
     # 受け取ったリクエストモデルを表示
-    pprint(pyload.model_dump())
-    pprint(pyload.model_dump(by_alias=True))
+    print("変換なし:", pyload.model_dump())
+    print("変換あり:", pyload.model_dump(by_alias=True))
     
     # レスポンスモデルを返す
     response = ResponseModel(
@@ -55,8 +54,8 @@ def base_model_test_2(
 ) -> ResponseModel:
     """getメソッドでテスト"""
     # 受け取ったリクエストモデルを表示
-    pprint(query.model_dump())
-    pprint(query.model_dump(by_alias=True))
+    print("変換なし:", query.model_dump())
+    print("変換あり:", query.model_dump(by_alias=True))
     
     # レスポンスモデルを返す
     response = ResponseModel(
