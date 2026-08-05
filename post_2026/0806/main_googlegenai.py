@@ -1,0 +1,48 @@
+from dotenv import load_dotenv
+from langchain_core.messages import HumanMessage
+from langchain_google_genai import ChatGoogleGenerativeAI
+from PIL import Image
+
+from modules.convert_image_base64 import image_to_bytes
+from modules.prompt import PROMPT
+
+# 環境変数の読み込み
+load_dotenv()
+
+
+def main():
+    # 画像の読み込み
+    img = Image.open("sample.jpg")
+    # 画像をBase64文字列に変換（LangChainの場合は基本Base64文字列に変換して渡す）
+    image_base64 = image_to_bytes(img)
+
+    # モデルの設定
+    llm = ChatGoogleGenerativeAI(
+        model="gemma-4-31b-it",
+        temperature=0.0,
+    )
+
+    # プロンプトの設定
+    message = HumanMessage(
+        content=[
+            {
+                "type": "text",
+                "text": PROMPT,
+            },
+            {
+                "type": "image_url",
+                "image_url": {"url": f"data:image/png;base64,{image_base64}"},
+            },
+        ]
+    )
+
+    # 返答の生成
+    response = llm.invoke([message])
+
+    # 生成された返答の取得
+    response_date = response.content
+    print(response_date[1]["text"])
+
+
+if __name__ == "__main__":
+    main()
