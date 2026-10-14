@@ -11,7 +11,12 @@ uv環境でSudachiPyのユーザ辞書（曲名情報など）を作成・設定
 
 #### ソースコードの説明
 
-このディレクトリは、Geminiで楽曲タイトルの読み仮名を推定してSudachiPy用のユーザ辞書を作成し、形態素解析で曲名を抽出するコードで構成されています。
+![Python](https://img.shields.io/badge/Python-3.13%2B-3776AB?logo=python&logoColor=white)
+![uv](https://img.shields.io/badge/uv-DE5FE9?logo=astral&logoColor=white)
+![SudachiPy](https://img.shields.io/badge/SudachiPy-2596be)
+![Gemini API](https://img.shields.io/badge/Gemini%20API-8E75C2?logo=google&logoColor=white)
+
+このディレクトリは、Gemini APIで楽曲タイトルの読み仮名を推定してSudachiPy用のユーザ辞書を作成し、形態素解析で曲名を固有名詞として抽出するコードと設定ファイルで構成されています。
 
 - `create_user_dict.py`
   - Gemini API（`gemini-3.5-flash-lite`）を使い、楽曲タイトルから全角カタカナの読み仮名をJSON形式で取得します。
@@ -28,7 +33,7 @@ uv環境でSudachiPyのユーザ辞書（曲名情報など）を作成・設定
 - `sudachi.json`
   - SudachiPyの設定ファイルです。
   - `userDict` に `user.dic` を指定し、作成したユーザ辞書を読み込みます。
-  - 長音記号の統一や未知語処理など、形態素解析に必要なプラグインを設定しています。
+  - 長音記号の統一（`ProlongedSoundMarkPlugin`）や括弧内読み仮名の無視（`IgnoreYomiganaPlugin`）、未知語処理など、形態素解析に必要なプラグインを設定しています。
 
 - `keywords.csv`
   - `create_user_dict.py` が出力したユーザ辞書の元データ（CSV形式）です。品詞「名詞,固有名詞,曲名」として各楽曲のエントリが記録されています。
