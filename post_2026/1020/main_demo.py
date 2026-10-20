@@ -15,8 +15,6 @@ sys.stdout.reconfigure(encoding="utf-8")
 # モデルの読み込み
 conv = indra_ocr.load(threads=4)
 
-input("\n\n\naaaaaa")
-
 # 画像の読み込み
 img_path = "./data/PXL_20251004_065751955.jpg"
 # img_path = "./data/PXL_20251004_070342022.jpg"
