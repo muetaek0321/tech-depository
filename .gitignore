@@ -9,6 +9,7 @@ logs/
 pretrained/
 
 result*/
+result*
 
 post_2025/0804/conversations*
 post_2025/0815/conversations.json
